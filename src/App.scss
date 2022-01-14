@@ -48,11 +48,18 @@ a {
   display: grid;
   width: 50%;
   padding: 2rem;
+  border-radius: 20px;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin-top: 4rem;
 }
-
+.edit_img{
+  display: flex;
+  justify-content: flex-end;
+  img{
+    width: 20px;
+  }
+}
 .create_new_post_block {
   display: grid;
   grid-template-rows: 1fr 2fr;
@@ -79,31 +86,42 @@ a {
     z-index: 2;
     pointer-events: none;
   }
-  .inputs {
-    transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
-    appearance: none;
-    background-color: none;
-    border: 1px solid rgb(82, 82, 82);
-    line-height: 0;
-    font-size: 17px;
-    width: 100%;
-    display: block;
-    box-sizing: border-box;
-    padding: 10px 15px;
-    border-radius: 60px;
-    color: rgb(82, 82, 82);
-    font-weight: 100;
-    letter-spacing: 0.01em;
-    position: relative;
-    z-index: 1;
-  }
+}
+.inputs {
+  transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
+  appearance: none;
+  background-color: none;
+  border: 1px solid rgb(82, 82, 82);
+  line-height: 0;
+  font-size: 17px;
+  //width: 100%;
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 60px;
+  color: rgb(82, 82, 82);
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+.posts_grid{
+  display: grid;
+  gap: 1rem;
 }
 .post_container {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  gap:3rem;
+  align-items: center;
   padding: 2rem;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  .post_body{
+    font-style: italic;
+    font-weight:500;
+  }
 }
 .add_post_btn{
   margin-bottom: 1rem;

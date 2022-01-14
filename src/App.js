@@ -1,14 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import FeedMain from './components/feed/FeedMain';
-import Header from './components/Header';
 import Login from './components/login/Login';
 import SignUp from './components/login/SignUp';
 import UserPage from './components/user/UserPage';
 import WelcomePage from './components/WelcomePage';
 import { AuthProvider } from './contexts/AuthContext';
 import CreatePost from './components/posts/CreatePost';
+import EditPost from './components/posts/EditPost';
 import Posts from './components/posts/Posts';
 import PrivateRoute from './features/PrivateRoute';
 
@@ -34,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login/>} />
           <Route path="profile" element={<UserPage/> } />
           <Route path="/add-post" element={<CreatePost/>} />
+          <Route path="/edit-post" element={<EditPost/>} />
       </Routes>
     </AuthProvider>
   );

@@ -5,7 +5,8 @@ import {
     FETCH_POSTS,
     SET_USER_ID,
     ADD_POST,
-    CHANGE_POST_TITLE
+    CHANGE_POST_TITLE,
+    CHANGE_POST_BODY
 } from '../actionType/postType'
 
 const initialState = {
@@ -59,7 +60,22 @@ const postsReducer = (state = initialState, action) => {
         case CHANGE_POST_TITLE: {
             return {
                 ...state,
-                title: action.payload
+                usersPostListInitialState: state.usersPostListInitialState.map(post =>{
+                    if(post.id === action.payload.id){
+                        post.title = action.payload.title
+                    }
+                })
+            }
+            
+        }
+        case CHANGE_POST_BODY: {
+            return {
+                ...state,
+                usersPostListInitialState: state.usersPostListInitialState.map(post =>{
+                    if(post.id === action.payload.id){
+                        post.body = action.payload.body
+                    }
+                })
             }
         }
         default:

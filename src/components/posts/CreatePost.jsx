@@ -4,8 +4,8 @@ import Header from '../Header';
 
 import '../../App.scss'
 
-import {changePostTitleAction} from "../../app/redux/actions/changePostTitleAction";
-import {changePostBodyAction} from "../../app/redux/actions/changePostBodyAction";
+import {createPostTitleAction} from "../../app/redux/actions/createPostTitleAction";
+import {createPostBodyAction} from "../../app/redux/actions/createPostBodyAction";
 import {setPostIdAction} from "../../app/redux/actions/setPostIdAction";
 import {setUserIdAction} from "../../app/redux/actions/setUserIdAction";
 import {addPostAction} from "../../app/redux/actions/addPostToListAction";
@@ -28,8 +28,8 @@ const CreatePost = () => {
     const postId = Math.floor(Math.random() * 99999)
 
     const createPostId = () => {
-        dispatch(changePostTitleAction(title))
-        dispatch(changePostBodyAction(body))
+        dispatch(createPostTitleAction(title))
+        dispatch(createPostBodyAction(body))
         dispatch(setPostIdAction(postId))
         dispatch(setUserIdAction(currentUser.uid))
         dispatch(addPostAction({
@@ -39,7 +39,6 @@ const CreatePost = () => {
             userId: currentUser.uid,
         }))
         navigate('/')
-
     }
 
     return (
@@ -65,7 +64,7 @@ const CreatePost = () => {
                                 </div>
                                 <div className="input_label_block">
                                     <label>Description</label>
-                                    <textarea
+                                    <input
                                         className="inputs"
                                         value={body}
                                         onChange={e => setBody(e.target.value)}

@@ -31,19 +31,19 @@ const Header = () => {
         <div>
             <header>
                 <div className='layout header-block'>
-                    <div className="logo-block">
-                        <Link to="/">
-                            <img src="https://technext.github.io/original/img/core-img/logo.png" alt=""/>
-                        </Link>
-                    </div>
-                    <div className="primary-menu">
-                        {!user ?
-                            <div>
-                                <button onClick={handleProfile}>Profile</button>
-                                <button onClick={handleLogout}>Log out</button>
-                            </div>
-                            : ''
-                        }
+                    <div className='container'>
+                        <div className="logo-block">
+                            <Link to="/">
+                                <img src="https://technext.github.io/original/img/core-img/logo.png" alt=""/>
+                            </Link>
+                        </div>
+                            {!user ?
+                                <div className="primary-menu">
+                                    <button onClick={handleProfile}>Profile</button>
+                                    <button onClick={handleLogout}>Log out</button>
+                                </div>
+                                : ''
+                            }
                     </div>
                 </div>
             </header>

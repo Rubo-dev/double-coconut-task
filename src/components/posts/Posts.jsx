@@ -1,24 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import '../../App.scss'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {fetchPosts} from "../../app/redux/actions/fetchPosts";
+import EditPost from "./EditPost";
+
 
 const Posts = () => {
 
-    const postsSelector = useSelector(state => state.postListInitialState);
-    const userPosts = useSelector(state => state.usersPostListInitialState);
+    const [isEdit, setIsEdit] = useState(false);
+    const postsSelector = useSelector(state => state.posts.postListInitialState);
+    const userPosts = useSelector(state => state.posts.usersPostListInitialState);
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
-
-    console.log(postsSelector)
 
     useEffect(() => {
         dispatch(fetchPosts())
     }, []);
-
 
     const addNewPost = () => {
         navigate('/create-post')
@@ -26,22 +25,12 @@ const Posts = () => {
 
     return (
         <div>
-            <div className="container">
+            <div className="container" >
                 <div className='posts_grid'>
                     <button className='add_post_btn' onClick={addNewPost}>Add new post</button>
                     {
                         userPosts.length !== 0
-                            ? userPosts.map(
-                            (userPost) =>
-                                <div key={userPost.id} className='post_container'>
-                                    <div>
-                                        <h2>{userPost.title}</h2>
-                                    </div>
-                                    <div>
-                                        {userPost.body}
-                                    </div>
-                                </div>
-                            ).reverse()
+                            ? userPosts.map((userPost) => <EditPost isEdit={isEdit} setIsEdit={setIsEdit} userPost={userPost} posts={userPosts}/>).reverse()
                             : ''
                     }
                     {
@@ -51,7 +40,7 @@ const Posts = () => {
                                     <div>
                                         <h2>{post.title}</h2>
                                     </div>
-                                    <div>
+                                    <div className="post_body">
                                         {post.body}
                                     </div>
                                 </div>

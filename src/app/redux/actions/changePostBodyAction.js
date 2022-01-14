@@ -1,8 +1,9 @@
-import {CREATE_POST_BODY} from '../actionType/postType'
+import {CHANGE_POST_BODY} from '../actionType/postType'
 
 export const changePostBodyAction = (element) => {
+    
     return {
-        type: CREATE_POST_BODY,
+        type: CHANGE_POST_BODY,
         payload: element
     };
 };

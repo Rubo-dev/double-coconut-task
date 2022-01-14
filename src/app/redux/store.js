@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
     user: userReducer
 })
 
-export const store = createStore(postsReducer, applyMiddleware(thunk));
+export const store = createStore(rootReducer, applyMiddleware(thunk));
