@@ -13,7 +13,6 @@ import Posts from './components/posts/Posts';
 import PrivateRoute from './features/PrivateRoute';
 
 function App() {
-
   return (
     <AuthProvider>
       <Routes>

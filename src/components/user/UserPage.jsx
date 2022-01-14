@@ -1,29 +1,30 @@
 import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLogin } from '../../contexts/AuthContext';
-import userSlice  from '../../app/redux/reducers/userSlice';
 import Header from '../Header';
+import {changeUserNameAction} from "../../app/redux/actions/userChangeNameAction";
+import {changeUserLastNameAction} from "../../app/redux/actions/userChangeLastNameAction";
 
 const UserPage = () => {
   
-    const users = useSelector(state => state.users);
+    const users = useSelector(state => state);
 
-    const dispatch = useDispatch();
-    
-    // const { editFirstName } = userSlice.actions;
-    
+    const {currentUser} = useLogin();
+
     const [firstName, setUserName] = useState(users.firstName);
 
     const [lastName, setLastName] = useState(users.lastName);
 
-    const {currentUser} = useLogin();
+    const dispatch = useDispatch();
+
+    console.log(users)
 
     const handleFirstNameChange = () =>{
-        dispatch(setUserName(firstName))
+        dispatch(changeUserNameAction(firstName))
     }
 
     const handleLastNameChange = () =>{
-        // dispatch(editUser(firstName))
+        dispatch(changeUserLastNameAction(firstName))
     }
 
     return (

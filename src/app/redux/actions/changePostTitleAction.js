@@ -1,8 +1,8 @@
-import { CREATE_POST_TITLE } from '../actionType/postType'
+import {CREATE_POST_TITLE} from '../actionType/postType'
 
-export  const changePostTitleAction =(element)=>{
+export const changePostTitleAction = (element) => {
     return {
-        type:CREATE_POST_TITLE,
-        payload:element
+        type: CREATE_POST_TITLE,
+        payload: element
     };
 };

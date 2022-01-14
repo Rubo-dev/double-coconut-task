@@ -31,28 +31,35 @@ const Login = () => {
 
     return (
         <div className="container">
-            <div className="card">
                 <form className="login__form" onSubmit={handleSubmit}>
-                    <h2>Log in</h2>
-                    {
-                        error && <p className = "error_container">{error}</p>
-                    }
-                    <div className="login_container">
-                        <div className='input'>
-                            <label>Email</label>
-                            <input type="email" ref={emailRef} required />
+                    <div className="login_block">
+                        <div className="title_block">
+                            <h2>Log in</h2>
                         </div>
-                        <div className='input'>
-                            <label>Password</label>
-                            <input type="password" ref={passwordRef} required />
+                        <div className="login-inputs-block">
+                            {
+                                error && <p className = "error_container">{error}</p>
+                            }
+                            <div className="login_container">
+                                <div className='input'>
+                                    <label>Email</label>
+                                    <input type="email" ref={emailRef} required />
+                                </div>
+                                <div className='input'>
+                                    <label>Password</label>
+                                    <input type="password" ref={passwordRef} required />
+                                </div>
+                            </div>
+                            <div className="btn_cont">
+                                <button className="login_btn" disabled={loading} type="submit">Log in</button>
+                            </div>
+                            <div className="login_cont">
+                                <h3>Need an account ? <Link to='/signup' > Sign up</Link></h3>
+                            </div>
                         </div>
                     </div>
-                    <button disabled={loading} type="submit">Log in</button>
                 </form>
-                <div className="login_container">
-                    <h3>Need an account ? <Link to='/signup' > Sign up</Link></h3>
-                </div>
-            </div>
+
         </div>
     );
 }

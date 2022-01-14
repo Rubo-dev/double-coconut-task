@@ -1,7 +1,12 @@
 import React,{useRef, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import '../../assets/elements/signUp.scss'
+
 import { useLogin } from '../../contexts/AuthContext';
+import {useDispatch, useSelector} from "react-redux";
+import {changeUserNameAction} from "../../app/redux/actions/userChangeNameAction";
+import {changeUserLastNameAction} from "../../app/redux/actions/userChangeLastNameAction";
 
 function SignUp() {
 
@@ -12,15 +17,19 @@ function SignUp() {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
 
-    const { signUp, addNewUser } = useLogin();
+    const [firstName,setFirstName] = useState('')
+    const [lastName,setLastName] = useState('')
+
+    const userData = useSelector(state => state)
+    const dispatch = useDispatch();
+
+    const { signUp } = useLogin();
 
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const pattern = new RegExp(/[a-zA-Z]+(?=.{6})/);
-
-    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,14 +46,10 @@ function SignUp() {
             setError('');
             setLoading(true);
             await signUp(emailRef.current.value, passwordRef.current.value);
-            // await addNewUser({
-            //     firstName: firstNameRef.current.value,
-            //     lastName: lastNameRef.current.value,
-            //     email: emailRef.current.value,
-            //     company: companyNameRef.current.value
-            // })
-            console.log('You have been signed in')
-            navigate("/")
+            dispatch(changeUserNameAction(firstName))
+            dispatch(changeUserLastNameAction(lastName))
+            console.log(`You have been signed in ${firstNameRef.current.value} ${lastNameRef.current.value}`)
+            navigate("/profile")
         } catch(error) {
             console.log(error);
             setError('Failed to create an account');
@@ -55,44 +60,50 @@ function SignUp() {
 
     return (
         <div className="container">
-            <div className="card">
                 <form className="login__form" onSubmit={handleSubmit}>
-                    <h2>Authorisation</h2>
-                    {
-                        error && <p className = "error_container">{error}</p>
-                    }
-                    <div className="login_container">
-                        <div className='input'>
-                            <label>First Name</label>
-                            <input type="firstName" ref={firstNameRef} required/>
+                    <div className="login_block">
+                        <div className="title_block">
+                            <h1>Authorisation</h1>
                         </div>
-                        <div className='input'>
-                            <label>Last Name</label>
-                            <input type="lastName" ref={lastNameRef} required/>
-                        </div>
-                        <div className='input'>
-                            <label>Email</label>
-                            <input type="email" ref={emailRef} required />
-                        </div>
-                        <div className='input'>
-                            <label>Company Name</label>
-                            <input type="companyName" ref={companyNameRef} required/>
-                        </div>
-                        <div className='input'>
-                            <label>Password</label>
-                            <input type="password" ref={passwordRef} required />
-                        </div>
-                        <div className='input'>
-                            <label>Password Confirmation</label>
-                            <input type="password" ref={passwordConfirmRef} required />
+                        <div className="login-inputs-block">
+                            {
+                                error && <p className = "error_container">{error}</p>
+                            }
+                            <div className="login_container">
+                                <div className='input'>
+                                    <label>First Name</label>
+                                    <input type="firstName" ref={firstNameRef} value={firstName} onChange={e=>setFirstName(e.target.value)} required/>
+                                </div>
+                                <div className='input'>
+                                    <label>Last Name</label>
+                                    <input type="lastName" ref={lastNameRef} value={lastName} onChange={e=>setLastName(e.target.value)} required/>
+                                </div>
+                                <div className='input'>
+                                    <label>Email</label>
+                                    <input type="email" ref={emailRef} required />
+                                </div>
+                                <div className='input'>
+                                    <label>Company Name</label>
+                                    <input type="companyName" ref={companyNameRef} required/>
+                                </div>
+                                <div className='input'>
+                                    <label>Password</label>
+                                    <input type="password" ref={passwordRef} required />
+                                </div>
+                                <div className='input'>
+                                    <label>Password Confirmation</label>
+                                    <input type="password" ref={passwordConfirmRef} required />
+                                </div>
+                            </div>
+                            <div className="btn_cont">
+                                <button className="login_btn" disabled={loading} type="submit">Sign up</button>
+                            </div>
+                            <div className="login_cont">
+                                <h3>Already have an account ? <Link to='/login' > Log in</Link></h3>
+                            </div>
                         </div>
                     </div>
-                    <button disabled={loading} type="submit">Sign up</button>
                 </form>
-                <div className="login_container">
-                    <h3>Already have an account ? <Link to='/login' > Log in</Link></h3>
-                </div>
-            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import '../assets/header.scss';
-import { useLogin } from '../contexts/AuthContext';
+import {useLogin} from '../contexts/AuthContext';
 
 
 const Header = () => {
@@ -9,12 +9,12 @@ const Header = () => {
     const [user, setUser] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate()
-    const { logout } = useLogin();
+    const {logout} = useLogin();
 
 
-    const handleLogout = async () =>{
+    const handleLogout = async () => {
         setError('')
-        try{
+        try {
             await logout()
             navigate('/login')
         } catch {
@@ -22,7 +22,7 @@ const Header = () => {
         }
     }
 
-    const handleProfile = () =>{
+    const handleProfile = () => {
         setError('')
         navigate('/profile')
     }
@@ -33,16 +33,16 @@ const Header = () => {
                 <div className='layout header-block'>
                     <div className="logo-block">
                         <Link to="/">
-                            <img src="https://technext.github.io/original/img/core-img/logo.png" alt="" />
+                            <img src="https://technext.github.io/original/img/core-img/logo.png" alt=""/>
                         </Link>
                     </div>
                     <div className="primary-menu">
                         {!user ?
-                        <div>
-                            <button onClick={handleProfile}>Profile</button>
-                            <button onClick={handleLogout}>Log out</button> 
-                        </div>
-                        : ''
+                            <div>
+                                <button onClick={handleProfile}>Profile</button>
+                                <button onClick={handleLogout}>Log out</button>
+                            </div>
+                            : ''
                         }
                     </div>
                 </div>

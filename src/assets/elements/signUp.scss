@@ -1,121 +1,173 @@
-.container{
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.card{
-    padding: 2.5rem 1.5rem;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    border-radius: 20px;
-    margin: 2rem auto;
-    background: #fff;
+
+.card {
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 20px;
+  margin: 2rem auto;
+  background: #fff;
+}
+
+.login_block {
+  border-radius: 45px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 4px 0 rgb(182 214 238 / 20%), 0 8px 8px 0 rgb(182 214 238 / 20%), 0 16px 16px 0 rgb(182 214 238 / 20%), 0 32px 32px 0 rgb(182 214 238 / 20%), 0 64px 64px 0 rgb(182 214 238 / 20%), 0 128px 128px 0 rgb(182 214 238 / 20%)
+}
+
+.title_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  padding: 35px 0;
+  background: transparent linear-gradient(
+                  90deg, #31BFFE 0%, #2699FB 100%) 0% 0% no-repeat padding-box;
+  border-radius: 45px 45px 0 0;
+  opacity: 1;
+}
+
+.login-inputs-block {
+  padding: 2.5rem 1.5rem;
+  background: #fff;
+  border-radius: 0 0 45px 45px;
+}
+
+.login__form {
+  display: grid;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+
+  h2 {
+    text-align: center;
   }
-.login__form{
+
+  .login_container {
     display: grid;
     justify-content: center;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #464545;
-    h2{
-        text-align: center;
-    }
-    .login_container{
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(2, auto);
-        gap: 1.5rem;
-        .input{
-            position: relative;
-            padding: 10px 0;      
-            label{
-            transition: (all 0.25s cubic-bezier(.53,.01,.35,1.5));
-            transform-origin: left center;
-            color: rgb(124, 124, 124);
-            font-weight: 100;
-            letter-spacing: 0.01em;
-            font-size: 17px;
-            box-sizing: border-box;
-            padding: 10px 15px;
-            display: block;
-            position: absolute;
-            margin-top: -40px;
-            z-index: 2;
-            pointer-events: none;
-            } 
-            input{
-            transition: (all 0.25s cubic-bezier(.53,.01,.35,1.5));
-            appearance: none;
-            background-color: none;
-            border: 1px solid rgb(82, 82, 82);
-            line-height: 0;
-            font-size: 17px;
-            width: 100%;
-            display: block;
-            box-sizing: border-box;
-            padding: 10px 15px;
-            border-radius: 60px;
-            color: rgb(82, 82, 82);
-            font-weight: 100;
-            letter-spacing: 0.01em;
-            position: relative;
-            z-index: 1;
-            }&:focus{
-                outline: none;
-                background: rgb(82, 82, 82);
-                color: white;
-                margin-top: 30px;
-            }&:valid{
-                margin-top: 30px
-            }&:focus ~ label{
-                translate:( 0 , -35px )
-            }&:valid ~ label{
-                text-transform: uppercase;
-                font-style: italic;
-                transform: (translate( 5px , -35px ) scale(0.6));
-            }
-        }
-    }
-    h2 {
-        margin-bottom: 1rem;
-    }
-    
-    button{
-        transition: (all 0.25s cubic-bezier(.53,.01,.35,1.5));
-        margin-top: 35px;
-        background-color: white;
-        border: 1px solid #0061a7;
+    grid-template-columns: repeat(2, auto);
+    gap: 1.5rem;
+
+    .input {
+      position: relative;
+      padding: 10px 0;
+
+      label {
+        transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
+        transform-origin: left center;
+        color: rgb(124, 124, 124);
+        font-weight: 100;
+        letter-spacing: 0.01em;
+        font-size: 17px;
+        box-sizing: border-box;
+        padding: 10px 15px;
+        display: block;
+        position: absolute;
+        margin-top: -40px;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      input {
+        transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
+        appearance: none;
+        background-color: none;
+        border: 1px solid rgb(82, 82, 82);
         line-height: 0;
         font-size: 17px;
-        display: inline-block;
+        width: 100%;
+        display: block;
         box-sizing: border-box;
-        padding: 20px 15px ;
+        padding: 10px 15px;
         border-radius: 60px;
-        color: #014f86 ;
+        color: rgb(82, 82, 82);
         font-weight: 100;
         letter-spacing: 0.01em;
         position: relative;
         z-index: 1;
-        &:hover, &:focus{
-            color: white;
-            background: linear-gradient(to bottom, #0061a7 5%, #007dc1 100%) ;
-            cursor: pointer;
-        }
+      }
+
+      &:focus {
+        outline: none;
+        background: rgb(82, 82, 82);
+        color: white;
+        margin-top: 30px;
+      }
+
+      &:valid {
+        margin-top: 30px
+      }
+
+      &:focus ~ label {
+        translate: (0, -35px)
+      }
+
+      &:valid ~ label {
+        text-transform: uppercase;
+        font-style: italic;
+        transform: (translate(5px, -35px) scale(0.6));
+      }
     }
-}
-.error_container{
-    display: flex;
-    border: 1px solid rgb(248, 122, 122);
-    background: rgb(240, 157, 157);
-    color: rgb(105, 1, 1);
-    padding: 1rem;
-    border-radius: 5px;
-}
-.login_container{
-    margin-top: 1rem;
-    text-align: center;
-    a{
-        text-decoration: underline;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .login_btn {
+    transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
+    margin-top: 35px;
+    background: transparent linear-gradient(90deg, #FF691C 0%, #FFB623 100%) 0% 0% no-repeat padding-box;
+    line-height: 0;
+    font-size: 18px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px 15px;
+    border-radius: 60px;
+    border: 1px solid #FF691C;
+    color: #fff;
+    width: 150px;
+    height: 40px;
+    font-weight: Bold;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+
+    &:hover, &:focus {
+      color: white;
+      background: transparent linear-gradient(90deg, #FF691C 0%, #FFB623 100%) 0% 0% no-repeat padding-box;
+      cursor: pointer;
     }
+  }
+}
+
+.btn_cont {
+  display: flex;
+  justify-content: center;
+}
+
+.error_container {
+  display: flex;
+  border: 1px solid rgb(248, 122, 122);
+  background: rgb(240, 157, 157);
+  color: rgb(105, 1, 1);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.login_cont {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  border-top: 1px solid #a8a7a7;
+
+  a {
+    text-decoration: underline;
+  }
 }

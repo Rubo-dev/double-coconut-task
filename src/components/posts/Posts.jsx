@@ -1,8 +1,8 @@
-import React,{useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import '../../App.scss'
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {fetchPosts} from "../../app/redux/actions/fetchPosts";
 
 const Posts = () => {
@@ -13,52 +13,51 @@ const Posts = () => {
 
     const dispatch = useDispatch();
 
-    // console.log(state )
+    console.log(postsSelector)
 
-    useEffect(() =>{
+    useEffect(() => {
         dispatch(fetchPosts())
     }, []);
 
-    // const {postsList} = postsSlice.addPost;
 
-    const addNewPost = () =>{
+    const addNewPost = () => {
         navigate('/create-post')
     }
 
     return (
         <div>
-            <button onClick={addNewPost}>Add new post</button>
-            <div className='posts_grid'>
-                {
-                    userPosts.length !==0
-                        ? userPosts.map(
-                        (userPost) =>
-                            <div key={userPost.id} className='post_container'>
-                                <div>
-                                    <h2>{userPost.title}</h2>
+            <div className="container">
+                <div className='posts_grid'>
+                    <button onClick={addNewPost}>Add new post</button>
+                    {
+                        userPosts.length !== 0
+                            ? userPosts.map(
+                            (userPost) =>
+                                <div key={userPost.id} className='post_container'>
+                                    <div>
+                                        <h2>{userPost.title}</h2>
+                                    </div>
+                                    <div>
+                                        {userPost.body}
+                                    </div>
                                 </div>
-                                <div>
-                                    {userPost.body}
+                            ).reverse()
+                            : ''
+                    }
+                    {
+                        postsSelector.map(
+                            (post) =>
+                                <div key={post.id} className='post_container'>
+                                    <div>
+                                        <h2>{post.title}</h2>
+                                    </div>
+                                    <div>
+                                        {post.body}
+                                    </div>
                                 </div>
-                            </div>
-                        ).reverse()
-                        : ''
-                }
-
-
-                {
-                    postsSelector.map(
-                        (post) =>
-                        <div key={post.id} className='post_container'>
-                            <div>
-                                <h2>{post.title}</h2>
-                                </div>
-                            <div>
-                                {post.body}
-                            </div>
-                        </div>
-                    )
-                }
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

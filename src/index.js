@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router} from 'react-router-dom';
-import {state} from "./app/redux";
+import {store} from "./app/redux/store";
 
 ReactDOM.render(
   <Router>
       <React.StrictMode>
-      <Provider store={state}>
+      <Provider store={store}>
         <App />
       </Provider>
     </React.StrictMode>
