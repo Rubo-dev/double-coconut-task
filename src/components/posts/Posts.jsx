@@ -28,7 +28,7 @@ const Posts = () => {
         <div>
             <div className="container">
                 <div className='posts_grid'>
-                    <button onClick={addNewPost}>Add new post</button>
+                    <button className='add_post_btn' onClick={addNewPost}>Add new post</button>
                     {
                         userPosts.length !== 0
                             ? userPosts.map(
