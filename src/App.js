@@ -1,57 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import './App.scss';
+import FeedMain from './components/feed/FeedMain';
+import Header from './components/Header';
+import Login from './components/login/Login';
+import SignUp from './components/login/SignUp';
+import UserPage from './components/user/UserPage';
+import WelcomePage from './components/WelcomePage';
+import { AuthProvider } from './contexts/AuthContext';
+import CreatePost from './components/posts/CreatePost';
+import Posts from './components/posts/Posts';
+import PrivateRoute from './features/PrivateRoute';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <AuthProvider>
+      <Routes>
+        <Route path="/*" element={
+          <PrivateRoute>
+            <WelcomePage />
+            <Posts />
+            
+          </PrivateRoute>
+        }>
+        </Route>
+        <Route path='/create-post' element={
+          <PrivateRoute>
+            <CreatePost />
+          </PrivateRoute>
+          }>
+          </Route>
+          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="profile" element={<UserPage/> } />
+          <Route path="/add-post" element={<CreatePost/>} />
+      </Routes>
+    </AuthProvider>
   );
 }
 

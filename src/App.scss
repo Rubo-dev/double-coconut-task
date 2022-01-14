@@ -1,0 +1,86 @@
+@import "./assets/includes/variables";
+
+* {
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+body{
+  background-color: #e5e5e5;
+}
+a {
+  text-decoration: none;
+  transition: .1s;
+  color: $lightColor;
+  &:hover {
+    color: $primaryColor;
+    transform: scale(1.05);
+  }
+}
+.layout{
+  width: 80%;
+  margin: 0 auto;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+.card{
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 20px;
+  margin: 2rem auto;
+  background: #fff;
+}
+.post_container{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+button{
+  box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color:#33bdef;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+  &:hover{
+    background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	  background-color:#019ad2;
+  }
+  &:active{
+    position:relative;
+    top:1px;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 50px;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: $primaryColor; 
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $primaryColorTransparent; 
+}

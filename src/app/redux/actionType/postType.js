@@ -1,0 +1,8 @@
+export const CREATE_POST_TITLE = 'CREATE_POST_TITLE'
+export const CREATE_POST_BODY = 'CREATE_POST_BODY'
+export const CHANGE_POST_TITLE = 'CHANGE_POST_TITLE'
+export const CHANGE_POST_BODY = 'CHANGE_POST_BODY'
+export const ADD_POST = 'ADD_POST'
+export const SET_POST_ID = 'SET_POST_ID'
+export const SET_USER_ID = 'SET_USER_ID'
+export const FETCH_POSTS = 'FETCH_POSTS'
