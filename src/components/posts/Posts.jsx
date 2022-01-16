@@ -5,6 +5,7 @@ import '../../App.scss'
 import { useNavigate } from 'react-router-dom';
 import {fetchPosts} from "../../app/redux/actions/fetchPosts";
 import EditPost from "./EditPost";
+import Pagination from "./Pagination";
 
 
 const Posts = () => {
@@ -48,6 +49,7 @@ const Posts = () => {
                     }
                 </div>
             </div>
+            {/* <Pagination  totalCount= {postsSelector} /> */}
         </div>
     )
 }

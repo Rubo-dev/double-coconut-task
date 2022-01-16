@@ -49,7 +49,7 @@ function SignUp() {
             dispatch(changeUserNameAction(firstName))
             dispatch(changeUserLastNameAction(lastName))
             console.log(`You have been signed in ${firstNameRef.current.value} ${lastNameRef.current.value}`)
-            navigate("/profile")
+            navigate("/")
         } catch(error) {
             console.log(error);
             setError('Failed to create an account');

@@ -8,8 +8,8 @@ import WelcomePage from './components/WelcomePage';
 import { AuthProvider } from './contexts/AuthContext';
 import CreatePost from './components/posts/CreatePost';
 import EditPost from './components/posts/EditPost';
-import Posts from './components/posts/Posts';
 import PrivateRoute from './features/PrivateRoute';
+import FeedMain from "./components/feed/FeedMain";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/*" element={
           <PrivateRoute>
             <WelcomePage />
-            <Posts />
+            <FeedMain />
             
           </PrivateRoute>
         }>
