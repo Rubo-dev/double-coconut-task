@@ -1,10 +1,10 @@
-import React,{useRef, useState, useEffect} from 'react';
+import React,{useRef, useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../../assets/elements/signUp.scss'
 
 import { useLogin } from '../../contexts/AuthContext';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setUserAction} from "../../app/redux/actions/setUserAction";
 
 function SignUp() {

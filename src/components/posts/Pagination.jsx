@@ -1,6 +1,4 @@
 import React,{useState} from 'react';
-// import classnames from 'classnames';
-// import './pagination.scss';
 import  ReactPaginate from 'react-paginate'
 const Pagination = ({postsData, postsPerPage, setPageNumber}) => {
 

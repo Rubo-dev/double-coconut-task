@@ -19,7 +19,6 @@ const CreatePost = () => {
 
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [errors, setErrors] = useState({title: "", body:""})
 
     const dispatch = useDispatch();
 
@@ -63,9 +62,6 @@ const CreatePost = () => {
                                            value={title}
                                            onChange={e => setTitle(e.target.value)}
                                     />
-                                    <div>
-                                        {errors.title && <p>{errors.title}</p>}
-                                    </div>
                                 </div>
                                 <div className="input_label_block">
                                     <label>Description</label>
@@ -74,9 +70,6 @@ const CreatePost = () => {
                                         value={body}
                                         onChange={e => setBody(e.target.value)}
                                     />
-                                     <div>
-                                        {errors.body && <p>{errors.body}</p>}
-                                    </div>
                                 </div>
                                 <div>
                                     <button type='submit'>Add post</button>
