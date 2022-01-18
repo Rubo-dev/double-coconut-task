@@ -1,45 +1,50 @@
 import React, {useState} from 'react'
 
-import '../../App.scss'
+const EditPost = ({userPost, isEdit, handlePostEdit, deleteCurrentPost}) => {
 
+    const [text, setText] = useState(userPost.body);
+    const [open, setOpen] = useState(isEdit);
 
-const EditPost = ({userPost, setIsEdit, isEdit, posts}) => {
+    const handleOpenPost = () => {
+        setOpen(!open);
+        handlePostEdit(userPost.id);
+    };
 
-    const [value, setValue] = useState(userPost.body);
-
-    console.log(posts)
-
-    const handlePostId = () => {
-        posts.map(post => {
-            if (post.id === userPost.id) {
-                setIsEdit(!isEdit)
-            }
-        })
+    const deletePost = () => {
+        deleteCurrentPost(userPost.id)
     }
 
 
     return (
-        <div key={userPost.id} className='post_container'>
+        <div className='post_container'>
             <div>
                 <h2>{userPost.title}</h2>
             </div>
-            <div>
-                <div className='edit_img'>
-                    <div onClick={handlePostId}>
-                        <img src="http://cdn.onlinewebfonts.com/svg/img_419166.png" alt=""/>
+            <div className='edit_delete_cont'>
+                <div className='edit_block_container'>
+                    <div className='edit_img_block'>
+                        <div className='edit_img' onClick={handleOpenPost}>
+                            <img src="http://cdn.onlinewebfonts.com/svg/img_419166.png" alt="Edit post"/>
+                        </div>
+                        <div className='delete_img' onClick={deletePost}>
+                            <img src="https://www.svgrepo.com/show/12848/x-symbol.svg" alt="Delete post" />
+                        </div>
                     </div>
                 </div>
                 {
-                    isEdit ?
-                        <>
-                            <input className='inputs' value={value} onChange={e => setValue(e.target.value)}/>
-                            <button onClick={() => setIsEdit(false)}>
+                    open ?
+                        <div className='edit_text_block'>
+                            <input 
+                                className='inputs editText' 
+                                value={text} 
+                                onChange={e => setText(e.target.value)}/>
+                            <button onClick={() => setOpen(false)}>
                                 Save
                             </button>
-                        </>
+                        </div>
                         :
                         <div className="post_body">
-                            {value}
+                            <p>{text}</p>
                         </div>
                 }
             </div>

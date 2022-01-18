@@ -5,8 +5,8 @@ import {
     FETCH_POSTS,
     SET_USER_ID,
     ADD_POST,
-    CHANGE_POST_TITLE,
-    CHANGE_POST_BODY
+    CHANGE_POST_BODY,
+    DELETE_POST
 } from '../actionType/postType'
 
 const initialState = {
@@ -57,21 +57,18 @@ const postsReducer = (state = initialState, action) => {
                 postListInitialState: action.payload
             }
         }
-        case CHANGE_POST_TITLE: {
-            return {
+        case DELETE_POST: {
+            return{
                 ...state,
-                usersPostListInitialState: state.usersPostListInitialState.map(post =>{
-                    if(post.id === action.payload.id){
-                        post.title = action.payload.title
-                    }
+                usersPostListInitialState: state.usersPostListInitialState.filter(post =>{
+                  return post.id !== action.payload.id
                 })
             }
-            
         }
         case CHANGE_POST_BODY: {
             return {
                 ...state,
-                usersPostListInitialState: state.usersPostListInitialState.map(post =>{
+                usersPostListInitialState: state.usersPostListInitialState.forEach(post =>{
                     if(post.id === action.payload.id){
                         post.body = action.payload.body
                     }

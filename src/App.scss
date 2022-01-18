@@ -22,7 +22,9 @@ a {
     transform: scale(1.05);
   }
 }
-
+li{
+  list-style-type:none;
+}
 .layout {
   width: 80%;
   margin: 0 auto;
@@ -35,7 +37,9 @@ a {
   width: 90%;
   margin: 0 auto;
 }
-
+.title_cont{
+  max-height: 30px;
+}
 .card {
   padding: 2.5rem 1.5rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -43,34 +47,101 @@ a {
   margin: 2rem auto;
   background: #fff;
 }
+.paginationContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  gap: 2rem;
+  li{
+    a{
+      width: 20px;
+      height: 20px;
+      background: #BCE0FD;
+      border-radius: 100%;
+      padding: .7rem 1rem;
+      cursor: pointer;
+    }
+    .prev-btn, .next-btn{
+      border-radius: 100%;
+      background: #FFAB22;
+      padding: .7rem .7rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    transition: .2s;
+    &:hover{
+      transform: scale(1.15);
+    }
+  }
+  .active-btn{
+    border-radius: 100%;
+    background: #FFAB22;
+    padding: .7rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    a{
+      background: unset;
+      color: #fff;
+      padding: 0;
+    }
+  }
+}
+
 
 .create_post_container {
   display: grid;
-  width: 50%;
+  width: 40%;
   padding: 2rem;
   border-radius: 20px;
   background: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   margin-top: 4rem;
 }
-.edit_img{
+.edit_text_block{
   display: flex;
-  justify-content: flex-end;
-  img{
-    width: 20px;
+  align-items: center;
+  gap: 1rem;
+  .inputs{
+    margin-bottom: 0;
+  }
+}
+.edit_delete_cont{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  .edit_block_container{
+    display: flex;
+    align-self: flex-start;
+    .edit_img_block{
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      .edit_img, .delete_img{
+        cursor: pointer;
+        transition: .3s;
+        &:hover{
+          transform: scale(1.1);
+        }
+        img{
+          width: 20px;
+        }
+      } 
+    }
   }
 }
 .create_new_post_block {
   display: grid;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 100px auto;
 }
 .form_cont {
   display: grid;
   grid-template-rows: 1fr 2fr;
+  gap: 2rem;
 }
 .input_label_block {
   display: grid;
-  grid-template-rows: 1fr 2fr;
   label {
     transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
     transform-origin: left center;
@@ -88,14 +159,13 @@ a {
   }
 }
 .inputs {
+  display: block;
   transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
   appearance: none;
   background-color: none;
   border: 1px solid rgb(82, 82, 82);
   line-height: 0;
   font-size: 17px;
-  //width: 100%;
-  display: block;
   box-sizing: border-box;
   padding: 10px 15px;
   border-radius: 60px;
@@ -105,6 +175,22 @@ a {
   position: relative;
   z-index: 1;
   margin-bottom: 1rem;
+}
+.inputs.editText{
+  width: 100%;
+  max-width: 650px;
+  min-width: 400px;
+}
+.card.user_container{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  .user_title_block{
+    display: grid;
+    grid-gap: 1rem;
+  }
 }
 .posts_grid{
   display: grid;
@@ -121,6 +207,7 @@ a {
   .post_body{
     font-style: italic;
     font-weight:500;
+    word-break: break-word;
   }
 }
 .add_post_btn{
@@ -129,22 +216,24 @@ a {
 button {
   background: transparent linear-gradient(90deg, #FF691C 0%, #FFB623 100%) 0% 0% no-repeat padding-box;
   border-radius: 60px;
-  transition: (all 0.25s cubic-bezier(.53, .01, .35, 1.5));
+  transition: (all 0.25s cubic-bezier(.53, .01, .35, 0.9));
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  border: 1px solid #FF691C;
-  font-size: 15px;
-  width: 150px;
+  font-size: 16px;
+  min-width: 100px;
+  width: fit-content;
+  max-width: 230px;
   height: 40px;
   font-weight: bold;
   padding: 10px 15px;
   outline: none;
   text-decoration: none;
-
+  border: unset;
   &:hover {
-    background: transparent linear-gradient(90deg, #FF691C 0%, #FFB623 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(90deg, #f86b24 0%, #f8ac13 100%) 0% 0% no-repeat padding-box;
+    transform: scale(1.1);
   }
 
   &:active {

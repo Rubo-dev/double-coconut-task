@@ -1,12 +1,11 @@
-import React,{useRef, useState} from 'react';
+import React,{useRef, useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import '../../assets/elements/signUp.scss'
 
 import { useLogin } from '../../contexts/AuthContext';
 import {useDispatch, useSelector} from "react-redux";
-import {changeUserNameAction} from "../../app/redux/actions/userChangeNameAction";
-import {changeUserLastNameAction} from "../../app/redux/actions/userChangeLastNameAction";
+import {setUserAction} from "../../app/redux/actions/setUserAction";
 
 function SignUp() {
 
@@ -19,8 +18,9 @@ function SignUp() {
 
     const [firstName,setFirstName] = useState('')
     const [lastName,setLastName] = useState('')
+    const [company,setCompany] = useState('')
+    const [email,setEmail] = useState('')
 
-    const userData = useSelector(state => state)
     const dispatch = useDispatch();
 
     const { signUp } = useLogin();
@@ -31,9 +31,15 @@ function SignUp() {
 
     const pattern = new RegExp(/[a-zA-Z]+(?=.{6})/);
 
+    let userData = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        company: company
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (passwordRef.current.value !==
             passwordConfirmRef.current.value) {
             return setError('Passwords do not match.');
@@ -46,15 +52,16 @@ function SignUp() {
             setError('');
             setLoading(true);
             await signUp(emailRef.current.value, passwordRef.current.value);
-            dispatch(changeUserNameAction(firstName))
-            dispatch(changeUserLastNameAction(lastName))
-            console.log(`You have been signed in ${firstNameRef.current.value} ${lastNameRef.current.value}`)
+            dispatch(
+                setUserAction({firstName, lastName, company, email})
+            )
+            localStorage.setItem('user', JSON.stringify(userData))
+            alert(`You have been signed in ${firstName} ${lastName}`)
             navigate("/")
         } catch(error) {
             console.log(error);
             setError('Failed to create an account');
         }
-
         setLoading(false);
     };
 
@@ -80,11 +87,11 @@ function SignUp() {
                                 </div>
                                 <div className='input'>
                                     <label>Email</label>
-                                    <input type="email" ref={emailRef} required />
+                                    <input type="email" ref={emailRef} value={email} onChange={e=>setEmail(e.target.value)}  required />
                                 </div>
                                 <div className='input'>
                                     <label>Company Name</label>
-                                    <input type="companyName" ref={companyNameRef} required/>
+                                    <input type="companyName" value={company} onChange={e=>setCompany(e.target.value)} ref={companyNameRef} required/>
                                 </div>
                                 <div className='input'>
                                     <label>Password</label>
